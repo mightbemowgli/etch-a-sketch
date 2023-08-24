@@ -16,8 +16,11 @@ html {
     height: 450px;
     border: 1px solid black;
     margin: 0 auto;
+    display: grid;
 }
 
 .grid-item {
     border: .125px solid black;
 }
+
+/* Add media queries */
