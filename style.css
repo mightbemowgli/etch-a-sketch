@@ -12,8 +12,12 @@ html {
 }
 
 .grid-container {
-    width: 500px;
-    height: 500px;
+    max-width: 450px;
+    height: 450px;
     border: 1px solid black;
     margin: 0 auto;
+}
+
+.grid-item {
+    border: .125px solid black;
 }
