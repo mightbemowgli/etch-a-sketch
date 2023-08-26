@@ -1,14 +1,17 @@
 const container = document.getElementById('grid-container');
+const gridSlider = document.getElementById('slider');
+const sliderOutput = document.getElementById('grid-size');
 
 let mouseDown = false;
-document.body.onmousedown = () => (mouseDown = true);
-document.body.onmouseup = () => (mouseDown = false);
+document.body.addEventListener("mousedown", () => (mouseDown = true))
+document.body.addEventListener("mouseup", () => (mouseDown = false))
 
 const changeColor = (e) => {
-    if (e.type === 'mouseover' && mouseDown || e.type === 'click') {
-        e.target.style.backgroundColor = 'black';
+    const isClickOrDown = ["click", "mousedown"].includes(e.type);
+    if ((e.type === "mouseover" && mouseDown) || isClickOrDown) {
+      e.target.style.backgroundColor = "black";
     }
-}
+  };
 
 const createGrid = size => {
     for (let i = 0; i < size ** 2; i++) {
@@ -24,7 +27,25 @@ const createGrid = size => {
     container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 }
 
-// create function for grid size input
-createGrid(16);
+sliderOutput.textContent = gridSlider.value + ' x ' + gridSlider.value;
+gridSlider.oninput = function() {
+    sliderOutput.textContent = this.value + ' x ' + this.value;
+    reloadGrid();
+}
+
+clearGrid = () => {
+    container.textContent = '';
+}
+
+reloadGrid = () => {
+    clearGrid();
+    createGrid(gridSlider.value);
+}
+
+window.onload = () => {
+    createGrid(gridSlider.value);
+}
+
+
 
 

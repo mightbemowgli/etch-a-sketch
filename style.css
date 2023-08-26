@@ -17,10 +17,25 @@ html {
     border: 1px solid black;
     margin: 0 auto;
     display: grid;
+    user-select: none;
 }
 
 .grid-item {
-    border: .125px solid black;
+    border: .125px solid rgba(0, 0, 0, 0.2);
+}
+
+.slider-container {
+    max-width: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider {
+    width: 100%;
+    height: 25px;
 }
 
 /* Add media queries */
