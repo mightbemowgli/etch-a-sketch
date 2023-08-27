@@ -1,4 +1,4 @@
-html {
+html, body {
     box-sizing: border-box;
 }
 
@@ -36,6 +36,34 @@ html {
 .slider {
     width: 100%;
     height: 25px;
+}
+
+.settings-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    padding: 0 .5em;
+    border: none;
+}
+
+button.active {
+    background-color:rgb(69, 69, 69);
+    color: rgb(255, 255, 255);
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* Add media queries */

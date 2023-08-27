@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Etch-A-Sketch</title>
+    <title>etch-a-sketch</title>
 </head>
 <body>
 
     <header class="header">
-        <h1 class="title">Etch-A-Sketch</h1>
+        <h1 class="title">etch-a-sketch</h1>
     </header>
 
     <main class="main">
@@ -17,13 +17,24 @@
         <div class="slider-container" id="slider-container">
             <input type="range" min="8" max="64" value="16" class="slider" id="slider">
             <p>Grid Size: <span id="grid-size"></span></p>
-            <input type="color" id="color-picker" name="color" value="#000000">
-            <button id="reload-grid-btn">Clear Grid</button>
+            <div class="settings-container" id="settings-container">
+                <input type="color" id="color-picker" value="#000000">
+                <button class="btn" id="color-mode">Color Mode</button>
+                <button class="btn" id="eraser-mode">Eraser</button>
+                <button class="btn" id="reload-grid-btn">Clear Grid</button>
+            </div>
         </div>
     </main>
 
     <footer class="footer">
-
+        <p>Copyright ©
+        <script>
+            document.write(new Date().getFullYear())
+        </script>
+        <a href="https://github.com/mightbemowgli" target="_blank">
+            mightbemowgli
+        </a>
+      </p>
     </footer>
 
     <script src="script.js"></script>

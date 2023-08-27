@@ -1,25 +1,41 @@
+const defaultColor = '#000000';
+const defaultMode = 'color';
+let currentMode = defaultMode;
+
+setCurrentMode = (newMode) => {
+    activateButton(newMode);
+    currentMode = newMode;
+}
+
 const container = document.getElementById('grid-container');
 const gridSlider = document.getElementById('slider');
 const sliderOutput = document.getElementById('grid-size');
 const colorPicker = document.getElementById('color-picker');
 const reloadGridBtn = document.getElementById('reload-grid-btn');
-const defaultColor = '#000000';
-let color = colorPicker.value;
-let mouseDown = false;
+const colorMode = document.getElementById('color-mode');
+const eraserMode = document.getElementById('eraser-mode');
+colorMode.onclick = () => setCurrentMode('color');
+eraserMode.onclick = () => setCurrentMode('eraser');
 
+let mouseDown = false;
 document.body.addEventListener('mousedown', () => (mouseDown = true))
 document.body.addEventListener('mouseup', () => (mouseDown = false))
 
-const changeColor = (e) => {
+changeColor = (e) => {
     const isClickOrDown = ['click', 'mousedown'].includes(e.type);
     if ((e.type === 'mouseover' && mouseDown) || isClickOrDown) {
-      e.target.style.backgroundColor = colorPicker.value;
+        if (currentMode === 'color') {
+            e.target.style.backgroundColor = colorPicker.value;
+        } 
+        else if (currentMode === 'eraser') {
+            e.target.style.backgroundColor = '#FFFFFF';
+        }
     }
   };
 
 colorPicker.addEventListener('change', changeColor, false);
 
-const createGrid = size => {
+createGrid = size => {
     for (let i = 0; i < size ** 2; i++) {
         const div = document.createElement('div');
         div.classList.add('grid-item');
@@ -49,8 +65,25 @@ reloadGrid = () => {
 
 reloadGridBtn.addEventListener('click', reloadGrid);
 
+activateButton = newMode => {
+    if (currentMode === 'color') {
+        colorMode.classList.remove('active');
+    } else
+    if (currentMode === 'eraser') {
+        eraserMode.classList.remove('active');
+    }
+
+    if (newMode === 'color') {
+        colorMode.classList.add('active');
+    } else
+    if (newMode === 'eraser') {
+        eraserMode.classList.add('active');
+    }
+}
+
 window.onload = () => {
     createGrid(gridSlider.value);
+    activateButton(defaultMode);
     colorPicker.value = defaultColor;
 }
 
