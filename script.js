@@ -2,6 +2,7 @@ const container = document.getElementById('grid-container');
 const gridSlider = document.getElementById('slider');
 const sliderOutput = document.getElementById('grid-size');
 const colorPicker = document.getElementById('color-picker');
+const reloadGridBtn = document.getElementById('reload-grid-btn');
 const defaultColor = '#000000';
 let color = colorPicker.value;
 let mouseDown = false;
@@ -45,6 +46,8 @@ reloadGrid = () => {
     clearGrid();
     createGrid(gridSlider.value);
 }
+
+reloadGridBtn.addEventListener('click', reloadGrid);
 
 window.onload = () => {
     createGrid(gridSlider.value);
